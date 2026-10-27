@@ -1,35 +1,25 @@
-import { useEffect, useState } from 'react'
-import { getHealth } from '../api/client.js'
 import Card from '../components/Card.jsx'
+import { useAuth } from '../context/auth.js'
 
-const MESSAGES = {
-  checking: '서버 상태를 확인하는 중입니다.',
-  ok: '서버 연결됨',
-  failed: '서버 연결 실패. 서버가 켜져 있는지 확인해 주세요.',
-}
+// 내 기록 홈: 세 가지 기록으로 이동하는 곳. 기록 화면은 이후 Phase에서 하나씩 연결한다.
+const SECTIONS = [
+  { title: '공부 기록', description: '오늘 공부한 내용을 제목과 내용으로 남깁니다.' },
+  { title: '할 일', description: '앞으로 할 일을 적고 끝내면 체크합니다.' },
+  { title: '오류 기록', description: '오류와 해결 방법을 모아 둡니다.' },
+]
 
 export default function Home() {
-  const [status, setStatus] = useState('checking')
-
-  useEffect(() => {
-    let active = true
-    getHealth()
-      .then((data) => active && setStatus(data.status === 'ok' ? 'ok' : 'failed'))
-      .catch(() => active && setStatus('failed'))
-    return () => {
-      active = false
-    }
-  }, [])
-
+  const { user } = useAuth()
   return (
     <>
-      <h1>BuildLog</h1>
+      <h1>{user.nickname}님, 안녕하세요.</h1>
       <p className="muted">공부 기록, 할 일, 오류 기록을 한곳에 모아 두는 곳입니다.</p>
-      <Card title="서버 상태">
-        <p role="status" className={`status status-${status}`}>
-          {MESSAGES[status]}
-        </p>
-      </Card>
+      {SECTIONS.map((section) => (
+        <Card key={section.title} title={section.title}>
+          <p className="muted">{section.description}</p>
+          <p className="hint">준비 중입니다.</p>
+        </Card>
+      ))}
     </>
   )
 }

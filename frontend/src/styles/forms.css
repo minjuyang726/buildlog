@@ -1,0 +1,56 @@
+/* 입력 양식과 안내 문구 */
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-row label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.field[aria-invalid='true'] {
+  border-color: var(--fail);
+}
+
+.hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.error-text {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--fail);
+  font-weight: 600;
+}
+
+.success-text {
+  margin: 0 0 1rem;
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 위쪽 메뉴의 사용자 이름과 로그아웃 버튼 */
+.nav {
+  align-items: center;
+}
+
+.nav-user {
+  color: var(--muted);
+}
+
+.nav-button {
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}

@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     secret_key: str
     # 쉼표로 구분한 화면 주소 목록
     cors_origins: str = "http://localhost:5173"
+    # 로그인 상태를 유지하는 시간(분). 기본 7일
+    access_token_expire_minutes: int = 60 * 24 * 7
 
     @property
     def cors_origin_list(self) -> list[str]:
