@@ -9,6 +9,9 @@ import StudyDetail from './pages/studies/StudyDetail.jsx'
 import StudyEdit from './pages/studies/StudyEdit.jsx'
 import StudyList from './pages/studies/StudyList.jsx'
 import StudyNew from './pages/studies/StudyNew.jsx'
+import TodoEdit from './pages/todos/TodoEdit.jsx'
+import TodoList from './pages/todos/TodoList.jsx'
+import TodoNew from './pages/todos/TodoNew.jsx'
 
 export default function App() {
   return (
@@ -23,6 +26,9 @@ export default function App() {
           <Route path="/studies/new" element={<StudyNew />} />
           <Route path="/studies/:id" element={<StudyDetail />} />
           <Route path="/studies/:id/edit" element={<StudyEdit />} />
+          <Route path="/todos" element={<TodoList />} />
+          <Route path="/todos/new" element={<TodoNew />} />
+          <Route path="/todos/:id/edit" element={<TodoEdit />} />
         </Route>
       </Route>
     </Routes>
