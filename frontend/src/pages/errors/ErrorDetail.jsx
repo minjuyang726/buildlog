@@ -52,7 +52,7 @@ export default function ErrorDetail() {
   return (
     <>
       <p>
-        <Link to="/errors">← 목록으로</Link>
+        <Link to={record.is_mine ? '/errors' : '/public'}>← {record.is_mine ? '목록으로' : '공개 기록으로'}</Link>
       </p>
       <Card>
         <h1 className="record-title">

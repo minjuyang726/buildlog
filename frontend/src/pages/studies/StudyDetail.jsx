@@ -53,7 +53,7 @@ export default function StudyDetail() {
   return (
     <>
       <p>
-        <Link to="/studies">← 목록으로</Link>
+        <Link to={study.is_mine ? '/studies' : '/public'}>← {study.is_mine ? '목록으로' : '공개 기록으로'}</Link>
       </p>
       <Card>
         <h1 className="record-title">

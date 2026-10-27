@@ -7,6 +7,7 @@ import ErrorList from './pages/errors/ErrorList.jsx'
 import ErrorNew from './pages/errors/ErrorNew.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
+import PublicList from './pages/public/PublicList.jsx'
 import Settings from './pages/Settings.jsx'
 import SignUp from './pages/SignUp.jsx'
 import StudyDetail from './pages/studies/StudyDetail.jsx'
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/todos" element={<TodoList />} />
           <Route path="/todos/new" element={<TodoNew />} />
           <Route path="/todos/:id/edit" element={<TodoEdit />} />
+          <Route path="/public" element={<PublicList />} />
           <Route path="/errors" element={<ErrorList />} />
           <Route path="/errors/new" element={<ErrorNew />} />
           <Route path="/errors/:id" element={<ErrorDetail />} />
