@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.errors import register_error_handlers
-from app.routers import auth, comments, errors, likes, public, studies, todos
+from app.routers import auth, comments, errors, likes, public, reports, studies, todos
 
 app = FastAPI(title="BuildLog")
 
@@ -23,6 +23,7 @@ app.include_router(errors.router)
 app.include_router(public.router)
 app.include_router(comments.router)
 app.include_router(likes.router)
+app.include_router(reports.router)
 
 
 @app.get("/api/health")

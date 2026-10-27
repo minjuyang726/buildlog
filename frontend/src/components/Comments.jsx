@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { createComment, deleteComment, listComments, updateComment } from '../api/comments.js'
 import { formatDateTime } from '../utils/format.js'
 import ConfirmDialog from './ConfirmDialog.jsx'
+import ReportButton from './ReportButton.jsx'
 import TextAreaField from './TextAreaField.jsx'
 
 // 공개된 공부 기록·오류 기록 아래에 보이는 댓글 영역. 오래된 댓글부터 보여준다.
@@ -137,6 +138,7 @@ export default function Comments({ parent, parentId }) {
                     수정
                   </button>
                 )}
+                {!comment.is_mine && <ReportButton targetType="comment" targetId={comment.id} />}
                 {comment.can_delete && (
                   <button type="button" className="button button-danger" onClick={() => setDeleting(comment)}>
                     삭제

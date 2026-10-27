@@ -5,6 +5,7 @@ import Card from '../../components/Card.jsx'
 import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
 import LikeButton from '../../components/LikeButton.jsx'
+import ReportButton from '../../components/ReportButton.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
 export default function StudyDetail() {
@@ -72,6 +73,11 @@ export default function StudyDetail() {
           <p className="error-text" role="alert">
             삭제하지 못했습니다. {deleteError}
           </p>
+        )}
+        {study.is_public && !study.is_mine && (
+          <div className="actions">
+            <ReportButton targetType="study" targetId={study.id} />
+          </div>
         )}
         {study.is_mine && (
           <div className="actions">

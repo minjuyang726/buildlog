@@ -5,6 +5,7 @@ import Card from '../../components/Card.jsx'
 import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
 import LikeButton from '../../components/LikeButton.jsx'
+import ReportButton from '../../components/ReportButton.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
 export default function ErrorDetail() {
@@ -85,6 +86,11 @@ export default function ErrorDetail() {
           <p className="error-text" role="alert">
             삭제하지 못했습니다. {deleteFailure}
           </p>
+        )}
+        {record.is_public && !record.is_mine && (
+          <div className="actions">
+            <ReportButton targetType="error" targetId={record.id} />
+          </div>
         )}
         {record.is_mine && (
           <div className="actions">

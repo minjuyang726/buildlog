@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { listPublic } from '../../api/public.js'
+import ReportButton from '../../components/ReportButton.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
 const KINDS = [
@@ -45,7 +46,14 @@ function PublicCard({ item }) {
       <article className="card record">{body}</article>
     </Link>
   ) : (
-    <article className="card record">{body}</article>
+    <article className="card record">
+      {body}
+      {!item.is_mine && (
+        <div className="actions">
+          <ReportButton targetType="todo" targetId={item.id} />
+        </div>
+      )}
+    </article>
   )
 }
 

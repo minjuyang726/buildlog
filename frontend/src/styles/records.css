@@ -237,3 +237,15 @@ textarea.field {
 .like-count {
   font-weight: 600;
 }
+
+/* 신고 */
+.report {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report .success-text {
+  margin: 0;
+}
