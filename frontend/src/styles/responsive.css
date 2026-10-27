@@ -1,0 +1,88 @@
+/* 반응형: 가장 좁은 휴대폰(360px)부터 큰 컴퓨터 화면까지. 다른 CSS 뒤에 불러와서 필요한 부분만 덮어쓴다. */
+
+/* 키보드로 이동할 때 지금 위치가 보이게 한다. */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* 메뉴: 손가락으로 누르기 편한 높이를 지키고, 좁으면 여러 줄로 나눈다. */
+.nav {
+  gap: 0 1rem;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* 긴 제목·긴 단어·긴 주소가 카드 밖으로 나가지 않게 한다. */
+.card,
+.record-title,
+.record-body,
+.record-preview,
+.comment,
+.todo-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.field {
+  max-width: 100%;
+}
+
+/* 확인창·신고창: 작은 화면이나 키보드가 올라온 화면에서도 안에 들어오고, 길면 스크롤된다. */
+.dialog {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.35rem;
+  }
+
+  .content {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+
+  .topbar-inner {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .card {
+    padding: 0.875rem 1rem;
+  }
+
+  /* 좁은 화면에서는 주요 버튼이 한 줄을 꽉 채워 누르기 쉽게 한다. */
+  .page-head .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .actions .button,
+  .actions .nav-button {
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .filters .chip {
+    flex: 1 1 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding-top: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

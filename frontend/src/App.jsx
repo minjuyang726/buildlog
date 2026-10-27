@@ -7,6 +7,7 @@ import ErrorList from './pages/errors/ErrorList.jsx'
 import ErrorNew from './pages/errors/ErrorNew.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
+import NotFound from './pages/NotFound.jsx'
 import PublicList from './pages/public/PublicList.jsx'
 import Settings from './pages/Settings.jsx'
 import SignUp from './pages/SignUp.jsx'
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/errors/:id" element={<ErrorDetail />} />
           <Route path="/errors/:id/edit" element={<ErrorEdit />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

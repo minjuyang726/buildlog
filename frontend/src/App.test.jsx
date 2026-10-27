@@ -190,3 +190,18 @@ describe('계정 설정 화면', () => {
     expect(screen.getByLabelText('새 닉네임').value).toBe('bobby')
   })
 })
+
+describe('없는 주소', () => {
+  it('로그인한 사용자에게 안내와 홈 링크를 보여준다', async () => {
+    mockApi({ 'GET /api/auth/me': [200, ALICE] })
+    renderApp('/없는-주소')
+    expect(await screen.findByRole('heading', { name: '페이지를 찾을 수 없습니다' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: '홈으로 가기' }).getAttribute('href')).toBe('/')
+  })
+
+  it('로그인하지 않았어도 안내를 보여준다', async () => {
+    mockApi({ 'GET /api/auth/me': NOT_LOGGED_IN })
+    renderApp('/없는-주소')
+    expect(await screen.findByRole('heading', { name: '페이지를 찾을 수 없습니다' })).toBeTruthy()
+  })
+})
