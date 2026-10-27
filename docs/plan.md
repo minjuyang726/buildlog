@@ -30,7 +30,7 @@
 | 서버 | 비밀번호 암호화 패키지, 로그인 토큰 패키지 | 비밀번호를 안전하게 저장하고 로그인 상태 유지 (Phase 3~4에서 구체적인 패키지를 정함) |
 | 서버 테스트 | pytest, httpx | 서버 자동 테스트 |
 | 화면 | React, React Router | 화면과 화면 이동 |
-| 화면 테스트 | Vitest, React Testing Library | 화면 자동 테스트 |
+| 화면 테스트 | Vitest, React Testing Library, jsdom | 화면 자동 테스트 (jsdom은 테스트 안에서 브라우저 화면을 흉내 내는 데 필요) |
 
 ## 3. 개발 원칙
 

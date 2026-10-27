@@ -38,6 +38,7 @@
 | 화면 | vite, @vitejs/plugin-react | 8.3.5, 6.1.2 | 2 |
 | 화면 | vitest | 5.0.5 | 2 |
 | 화면 | @testing-library/react | 16.3.3 | 2 |
+| 화면 | jsdom (화면 테스트용, Phase 2에서 추가) | 30.1.3 | 2 |
 
 - 비밀번호 암호화와 로그인 토큰 패키지는 `plan.md`에서 "Phase 3~4에서 정함"으로 둔 항목이라 위 두 개는 후보일 뿐입니다.
 
