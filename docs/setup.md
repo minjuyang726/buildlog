@@ -78,7 +78,8 @@ Windows PowerShell 기준입니다. 각 Phase에서 실제로 실행해 보고 �
 | 화면 패키지 설치 | `cd frontend` 후 `npm install` | 2 |
 | 화면 실행 | `cd frontend` 후 `npm run dev` | 2 |
 | 화면 테스트 | `cd frontend` 후 `npm test` | 2 |
-| 테이블 만들기·변경 | `cd backend` 후 `alembic upgrade head` | 3 |
+| 테이블 만들기·변경 | `cd backend` 후 `alembic upgrade head` | 3 (실행 확인됨) |
+| 새 테이블 변경 이력 만들기 | `cd backend` 후 `alembic revision --autogenerate -m "설명"` | 3 (실행 확인됨) |
 
 ## 5. `.gitignore` 보완 예정
 
@@ -86,3 +87,8 @@ Windows PowerShell 기준입니다. 각 Phase에서 실제로 실행해 보고 �
 
 - `*.sqlite3` (개발·테스트용 데이터 파일)
 - `.pytest_cache/`
+
+## 6. 알아둘 점
+
+- `alembic.ini` 같은 설정 파일에는 한글 주석을 쓰지 않습니다. Windows가 읽지 못해 마이그레이션이 실패합니다.
+- 자동 테스트는 `DATABASE_URL`을 임시 SQLite로 바꿔서 실행하므로 `database/buildlog.test.sqlite3`(개발용 데이터)를 건드리지 않습니다.
