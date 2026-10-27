@@ -13,3 +13,7 @@ __pycache__/
 
 # 로그
 *.log
+
+# 개발·테스트용 데이터 파일과 테스트 캐시
+*.sqlite3
+.pytest_cache/
