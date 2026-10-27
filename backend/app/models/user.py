@@ -1,10 +1,11 @@
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy import CheckConstraint, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column, validates
 
 from app.db.base import Base
+from app.models.common import utcnow
 
 NICKNAME_PATTERN = re.compile(r"^[가-힣A-Za-z0-9_]{2,20}$")
 
@@ -12,10 +13,6 @@ NICKNAME_PATTERN = re.compile(r"^[가-힣A-Za-z0-9_]{2,20}$")
 def normalize_email(email: str) -> str:
     """이메일은 앞뒤 공백을 지우고 소문자로 바꿔 같은 주소로 취급한다."""
     return email.strip().lower()
-
-
-def utcnow() -> datetime:
-    return datetime.now(timezone.utc)
 
 
 class User(Base):

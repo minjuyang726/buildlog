@@ -39,10 +39,29 @@ def test_migration_matches_model_columns(db_url):
     assert columns == {"id", "email", "password_hash", "nickname", "created_at"}
 
 
+def test_upgrade_creates_all_tables(db_url):
+    command.upgrade(alembic_config(db_url), "head")
+    assert table_names(db_url) >= {"users", "studies", "todos", "error_records", "alembic_version"}
+
+
+def test_model_tables_match_migrated_tables(tmp_path, engine):
+    """모델에 적은 테이블·칸과 마이그레이션 결과가 서로 같아야 한다."""
+    migrated_url = f"sqlite:///{(tmp_path / 'migrated.sqlite3').as_posix()}"
+    command.upgrade(alembic_config(migrated_url), "head")
+    migrated = make_engine(migrated_url)
+    try:
+        for table in ("users", "studies", "todos", "error_records"):
+            from_migration = {c["name"] for c in inspect(migrated).get_columns(table)}
+            from_models = {c["name"] for c in inspect(engine).get_columns(table)}
+            assert from_migration == from_models, table
+    finally:
+        migrated.dispose()
+
+
 def test_downgrade_and_upgrade_again_work(db_url):
     config = alembic_config(db_url)
     command.upgrade(config, "head")
     command.downgrade(config, "base")
-    assert "users" not in table_names(db_url)
+    assert table_names(db_url) == {"alembic_version"}
     command.upgrade(config, "head")
-    assert "users" in table_names(db_url)
+    assert {"users", "studies", "todos", "error_records"} <= table_names(db_url)
