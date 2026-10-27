@@ -1,6 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import ErrorDetail from './pages/errors/ErrorDetail.jsx'
+import ErrorEdit from './pages/errors/ErrorEdit.jsx'
+import ErrorList from './pages/errors/ErrorList.jsx'
+import ErrorNew from './pages/errors/ErrorNew.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Settings from './pages/Settings.jsx'
@@ -29,6 +33,10 @@ export default function App() {
           <Route path="/todos" element={<TodoList />} />
           <Route path="/todos/new" element={<TodoNew />} />
           <Route path="/todos/:id/edit" element={<TodoEdit />} />
+          <Route path="/errors" element={<ErrorList />} />
+          <Route path="/errors/new" element={<ErrorNew />} />
+          <Route path="/errors/:id" element={<ErrorDetail />} />
+          <Route path="/errors/:id/edit" element={<ErrorEdit />} />
         </Route>
       </Route>
     </Routes>

@@ -6,7 +6,7 @@ import { useAuth } from '../context/auth.js'
 const SECTIONS = [
   { title: '공부 기록', description: '오늘 공부한 내용을 제목과 내용으로 남깁니다.', to: '/studies' },
   { title: '할 일', description: '앞으로 할 일을 적고 끝내면 체크합니다.', to: '/todos' },
-  { title: '오류 기록', description: '오류와 해결 방법을 모아 둡니다.' },
+  { title: '오류 기록', description: '오류와 해결 방법을 모아 둡니다.', to: '/errors' },
 ]
 
 export default function Home() {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { deleteTodo, listTodos, setTodoDone } from '../../api/todos.js'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
@@ -23,26 +23,29 @@ export default function TodoList() {
   const [actionError, setActionError] = useState('')
   const [deleting, setDeleting] = useState(null) // 삭제 확인 중인 할 일
   const [busy, setBusy] = useState(false)
-
-  const load = useCallback(async (value) => {
-    try {
-      const data = await listTodos(value)
-      setItems(data.items)
-      setError('')
-    } catch (err) {
-      setError(err.message)
-    }
-  }, [])
+  const [reloadKey, setReloadKey] = useState(0) // 값이 바뀌면 목록을 다시 받아 온다.
 
   useEffect(() => {
-    load(filter)
-  }, [filter, load])
+    let active = true
+    listTodos(filter)
+      .then((data) => {
+        if (!active) return
+        setItems(data.items)
+        setError('')
+      })
+      .catch((err) => active && setError(err.message))
+    return () => {
+      active = false
+    }
+  }, [filter, reloadKey])
+
+  const reload = () => setReloadKey((key) => key + 1)
 
   async function toggle(todo) {
     setActionError('')
     try {
       await setTodoDone(todo.id, !todo.is_done)
-      await load(filter) // 순서와 필터 결과가 바뀌므로 목록을 다시 받는다.
+      reload() // 순서와 필터 결과가 바뀌므로 목록을 다시 받는다.
     } catch (err) {
       // 실패하면 기존 상태를 그대로 두고 이유를 알려준다.
       setActionError(`완료 상태를 바꾸지 못했습니다. ${err.message}`)
@@ -55,7 +58,7 @@ export default function TodoList() {
     try {
       await deleteTodo(deleting.id)
       setDeleting(null)
-      await load(filter)
+      reload()
     } catch (err) {
       setActionError(`삭제하지 못했습니다. ${err.message}`)
       setDeleting(null)

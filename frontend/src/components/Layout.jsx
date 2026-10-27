@@ -24,6 +24,7 @@ export default function Layout() {
                 <Link to="/">홈</Link>
                 <Link to="/studies">공부 기록</Link>
                 <Link to="/todos">할 일</Link>
+                <Link to="/errors">오류 기록</Link>
                 <Link to="/settings">계정 설정</Link>
                 <span className="nav-user">{user.nickname}</span>
                 <button type="button" className="nav-button" onClick={handleLogout}>

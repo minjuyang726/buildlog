@@ -190,3 +190,19 @@ textarea.field {
   flex-basis: 100%;
   margin-top: 0.25rem;
 }
+
+/* 오류 기록 */
+.section-title {
+  font-size: 1rem;
+  margin: 1.25rem 0 0;
+}
+
+.badge-resolved {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.badge-open {
+  border-color: var(--fail);
+  color: var(--fail);
+}
