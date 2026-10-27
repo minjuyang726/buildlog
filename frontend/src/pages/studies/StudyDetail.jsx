@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteStudy, getStudy } from '../../api/studies.js'
 import Card from '../../components/Card.jsx'
+import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
@@ -81,6 +82,8 @@ export default function StudyDetail() {
           </div>
         )}
       </Card>
+      {/* 댓글은 공개된 기록에서만 보인다. 비공개가 되면 숨겨지고, 다시 공개하면 돌아온다. */}
+      {study.is_public && <Comments parent="studies" parentId={study.id} />}
       {confirming && (
         <ConfirmDialog
           title="공부 기록을 삭제할까요?"

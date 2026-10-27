@@ -137,6 +137,7 @@ describe('다른 사람의 공개 기록 읽기 화면', () => {
   it('돌아가기 링크가 공개 기록 화면을 가리킨다', async () => {
     mockApi({
       ...me,
+      'GET /api/studies/1/comments': [200, { items: [] }],
       'GET /api/studies/1': [
         200,
         { id: 1, title: '남의 공부', content: '내용', is_public: true, created_at: '2026-10-27T01:00:00Z', updated_at: null, author_nickname: 'bobby', is_mine: false },

@@ -206,3 +206,21 @@ textarea.field {
   border-color: var(--fail);
   color: var(--fail);
 }
+
+/* 댓글 */
+.comments {
+  margin-top: 1.5rem;
+}
+
+.comment {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.comment .record-body {
+  margin: 0.25rem 0;
+}
+
+.comment .actions {
+  margin-top: 0.25rem;
+}

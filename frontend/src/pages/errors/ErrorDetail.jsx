@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteError, getError } from '../../api/errors.js'
 import Card from '../../components/Card.jsx'
+import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
@@ -94,6 +95,8 @@ export default function ErrorDetail() {
           </div>
         )}
       </Card>
+      {/* 댓글은 공개된 기록에서만 보인다. 비공개가 되면 숨겨지고, 다시 공개하면 돌아온다. */}
+      {record.is_public && <Comments parent="errors" parentId={record.id} />}
       {confirming && (
         <ConfirmDialog
           title="오류 기록을 삭제할까요?"
