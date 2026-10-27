@@ -224,3 +224,16 @@ textarea.field {
 .comment .actions {
   margin-top: 0.25rem;
 }
+
+/* 좋아요 */
+.like {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.like-count {
+  font-weight: 600;
+}

@@ -4,6 +4,7 @@ import { deleteError, getError } from '../../api/errors.js'
 import Card from '../../components/Card.jsx'
 import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
+import LikeButton from '../../components/LikeButton.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
 export default function ErrorDetail() {
@@ -79,6 +80,7 @@ export default function ErrorDetail() {
           <p className="muted">아직 해결 방법이 없습니다.</p>
         )}
 
+        {record.is_public && <LikeButton parent="errors" parentId={record.id} />}
         {deleteFailure && (
           <p className="error-text" role="alert">
             삭제하지 못했습니다. {deleteFailure}

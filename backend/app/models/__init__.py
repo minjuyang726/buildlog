@@ -4,3 +4,4 @@ from app.models.study import Study  # noqa: F401
 from app.models.todo import Todo  # noqa: F401
 from app.models.user import User  # noqa: F401
 from app.models.comment import Comment  # noqa: F401
+from app.models.like import Like  # noqa: F401

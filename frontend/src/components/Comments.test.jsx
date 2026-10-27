@@ -7,7 +7,11 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-const me = { 'GET /api/auth/me': [200, ALICE] }
+const me = {
+  'GET /api/auth/me': [200, ALICE],
+  'GET /api/studies/1/like': [200, { liked: false, like_count: 0 }],
+  'GET /api/errors/3/like': [200, { liked: false, like_count: 0 }],
+}
 const type = (label, value) => fireEvent.change(screen.getByLabelText(label), { target: { value } })
 const click = (name) => fireEvent.click(screen.getByRole('button', { name }))
 

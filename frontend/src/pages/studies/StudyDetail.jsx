@@ -4,6 +4,7 @@ import { deleteStudy, getStudy } from '../../api/studies.js'
 import Card from '../../components/Card.jsx'
 import Comments from '../../components/Comments.jsx'
 import ConfirmDialog from '../../components/ConfirmDialog.jsx'
+import LikeButton from '../../components/LikeButton.jsx'
 import { formatDateTime } from '../../utils/format.js'
 
 export default function StudyDetail() {
@@ -66,6 +67,7 @@ export default function StudyDetail() {
           {study.updated_at && ` · 수정 ${formatDateTime(study.updated_at)}`}
         </p>
         <div className="record-body">{study.content}</div>
+        {study.is_public && <LikeButton parent="studies" parentId={study.id} />}
         {deleteError && (
           <p className="error-text" role="alert">
             삭제하지 못했습니다. {deleteError}
