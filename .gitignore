@@ -1,0 +1,15 @@
+# 비밀 설정 파일 (.env.example은 기록)
+.env
+.env.*
+!.env.example
+
+# 설치 폴더
+.venv/
+node_modules/
+
+# 생성 결과
+dist/
+__pycache__/
+
+# 로그
+*.log
