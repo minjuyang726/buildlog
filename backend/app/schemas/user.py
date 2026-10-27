@@ -4,6 +4,8 @@ from app.models.user import NICKNAME_PATTERN, normalize_email
 
 PASSWORD_MIN = 8
 PASSWORD_MAX = 64
+PASSWORD_MESSAGE = "비밀번호는 8자 이상 64자 이하로 입력해 주세요."
+NICKNAME_MESSAGE = "닉네임은 2~20자의 한글, 영문, 숫자, 밑줄만 사용할 수 있습니다."
 
 
 def _strip(value):
@@ -13,7 +15,7 @@ def _strip(value):
 def _check_nickname(value: str) -> str:
     value = value.strip()
     if not NICKNAME_PATTERN.match(value):
-        raise ValueError("nickname")
+        raise ValueError(NICKNAME_MESSAGE)
     return value
 
 
@@ -37,7 +39,7 @@ class SignupRequest(BaseModel):
     def _check_password(cls, value: str) -> str:
         # 비밀번호는 입력한 그대로 확인한다. 공백을 지우지 않는다.
         if not PASSWORD_MIN <= len(value) <= PASSWORD_MAX:
-            raise ValueError("password")
+            raise ValueError(PASSWORD_MESSAGE)
         return value
 
     @field_validator("nickname")

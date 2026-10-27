@@ -50,6 +50,7 @@ async function request(method, path, body) {
 export const apiGet = (path) => request('GET', path)
 export const apiPost = (path, body) => request('POST', path, body ?? {})
 export const apiPatch = (path, body) => request('PATCH', path, body)
+export const apiPut = (path, body) => request('PUT', path, body)
 export const apiDelete = (path) => request('DELETE', path)
 
 export function getHealth() {

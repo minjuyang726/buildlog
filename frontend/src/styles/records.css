@@ -1,0 +1,141 @@
+/* 기록 목록·상세·확인창 */
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-head h1 {
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search .field {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.record-link:hover .card,
+.record-link:focus-visible .card {
+  border-color: var(--primary);
+}
+
+.record-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.record-preview {
+  margin: 0 0 0.25rem;
+  color: var(--text);
+}
+
+.record-body {
+  white-space: pre-wrap;
+  margin: 1rem 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.badge-public {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.button-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.button-danger {
+  background: var(--fail);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.check input {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+textarea.field {
+  resize: vertical;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 확인창 */
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(31, 36, 48, 0.45);
+}
+
+.dialog {
+  width: 100%;
+  max-width: 420px;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.dialog-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}

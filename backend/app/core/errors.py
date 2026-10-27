@@ -31,5 +31,8 @@ def register_error_handlers(app: FastAPI) -> None:
         for error in exc.errors():
             location = error.get("loc", ())
             field = str(location[-1]) if len(location) > 1 else "body"
-            errors.setdefault(field, FIELD_MESSAGES.get(field, DEFAULT_MESSAGE))
+            context = error.get("ctx") or {}
+            # 검사 규칙이 직접 적은 안내 문구가 있으면 그것을, 없으면 항목별 기본 문구를 쓴다.
+            message = str(context["error"]) if "error" in context else FIELD_MESSAGES.get(field, DEFAULT_MESSAGE)
+            errors.setdefault(field, message)
         return JSONResponse(status_code=422, content={"errors": errors})

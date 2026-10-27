@@ -120,9 +120,9 @@ describe('로그인 화면', () => {
     click('로그인')
 
     expect(await screen.findByRole('heading', { name: 'alice님, 안녕하세요.' })).toBeTruthy()
-    expect(screen.getByText('공부 기록')).toBeTruthy()
-    expect(screen.getByText('할 일')).toBeTruthy()
-    expect(screen.getByText('오류 기록')).toBeTruthy()
+    for (const name of ['공부 기록', '할 일', '오류 기록']) {
+      expect(screen.getByRole('heading', { level: 2, name })).toBeTruthy()
+    }
   })
 
   it('이미 로그인한 상태로 들어오면 홈으로 이동한다', async () => {

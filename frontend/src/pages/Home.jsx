@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import Card from '../components/Card.jsx'
 import { useAuth } from '../context/auth.js'
 
 // 내 기록 홈: 세 가지 기록으로 이동하는 곳. 기록 화면은 이후 Phase에서 하나씩 연결한다.
 const SECTIONS = [
-  { title: '공부 기록', description: '오늘 공부한 내용을 제목과 내용으로 남깁니다.' },
+  { title: '공부 기록', description: '오늘 공부한 내용을 제목과 내용으로 남깁니다.', to: '/studies' },
   { title: '할 일', description: '앞으로 할 일을 적고 끝내면 체크합니다.' },
   { title: '오류 기록', description: '오류와 해결 방법을 모아 둡니다.' },
 ]
@@ -17,7 +18,7 @@ export default function Home() {
       {SECTIONS.map((section) => (
         <Card key={section.title} title={section.title}>
           <p className="muted">{section.description}</p>
-          <p className="hint">준비 중입니다.</p>
+          {section.to ? <Link to={section.to}>{section.title} 열기</Link> : <p className="hint">준비 중입니다.</p>}
         </Card>
       ))}
     </>
